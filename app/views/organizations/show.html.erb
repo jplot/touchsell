@@ -5,5 +5,31 @@
   <%= @organization.name %>
 </p>
 
+<h1>Nodes</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @organization.nodes.main.each do |node| %>
+    <tr>
+      <td><%= node.name %></td>
+      <td><%= link_to 'Show', organization_node_path(node.organization, node) %></td>
+      <% unless node.primary %>
+        <td><%= link_to 'Edit', edit_organization_node_path(node) %></td>
+        <td><%= link_to 'Destroy', node, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
 <%= link_to 'Edit', edit_organization_path(@organization) %> |
 <%= link_to 'Back', organizations_path %>

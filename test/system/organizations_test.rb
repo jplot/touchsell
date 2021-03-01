@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class OrganizationsTest < ApplicationSystemTestCase
   setup do
-    @organization = organizations(:one)
+    @organization = organizations(:organization_1)
   end
 
   test "visiting the index" do

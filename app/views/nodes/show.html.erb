@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @node.name %>
+</p>
+
+<h1>Children</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @node.children.each do |node| %>
+    <tr>
+      <td><%= node.name %></td>
+      <td><%= link_to 'Show', node %></td>
+      <td><%= link_to 'Edit', edit_organization_node_path(@node.organization, node) %></td>
+      <td><%= link_to 'Destroy', node, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Node', organization_node_new_path(@node.organization, @node) %> |
+<% unless @node.primary %>
+  <%= link_to 'Edit', edit_organization_node_path(@node.organization, @node) %> |
+  <%= link_to 'Destroy', @node, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<% end %>
+
+<%= link_to 'Back', @node.parent ? organization_node_path(@node.organization, @node.parent) : organization_path(@node.organization) %>

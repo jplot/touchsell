@@ -1,0 +1,6 @@
+<h1>Editing Node</h1>
+
+<%= render 'form', node: @node %>
+
+<%= link_to 'Show', @node %> |
+<%= link_to 'Back', @node.parent ? organization_node_path(@node.organization, @node.parent) : organization_path(@node.organization) %>

@@ -1,0 +1,16 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+node_1:
+  record: organization_1 (Organization)
+  name: MyString
+  primary: true
+
+node_1_1:
+  record: node_1 (Node)
+  parent: node_1
+  name: MyString
+
+node_2:
+  record: organization_2 (Organization)
+  name: MyString
+  primary: true

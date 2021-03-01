@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_25_180620) do
+ActiveRecord::Schema.define(version: 2021_02_25_182404) do
+
+  create_table "nodes", force: :cascade do |t|
+    t.string "record_type", null: false
+    t.integer "record_id", null: false
+    t.integer "node_id"
+    t.string "name", null: false
+    t.boolean "primary", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["node_id"], name: "index_nodes_on_node_id"
+    t.index ["record_type", "record_id"], name: "index_nodes_on_record_type_and_record_id"
+  end
 
   create_table "organizations", force: :cascade do |t|
     t.string "name", null: false
@@ -18,4 +30,5 @@ ActiveRecord::Schema.define(version: 2021_02_25_180620) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "nodes", "nodes"
 end
